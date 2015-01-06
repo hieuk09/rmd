@@ -1,0 +1,17 @@
+PATH
+  remote: .
+  specs:
+    rmd (0.0.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    thor (0.19.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.6)
+  rmd!
+  thor

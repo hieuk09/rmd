@@ -1,0 +1,3 @@
+module Rmd
+  VERSION = "0.0.1"
+end
