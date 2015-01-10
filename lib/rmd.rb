@@ -1,6 +1,6 @@
 require "rmd/version"
 require 'thor'
-require 'rmd/downloader'
+require 'rmd/processor'
 require 'rmd/main'
 
 module RMD

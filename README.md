@@ -20,6 +20,13 @@ Or install it yourself as:
 
 TODO: Write usage instructions here
 
+## Features
+
+- Download songs/playlists from NCT, Mp3 Zing
+- Read a file to get list of links to download
+- Visual progress bar for download
+- Specify download folder
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/rmd/fork )
