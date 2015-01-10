@@ -1,3 +1,6 @@
+require 'open-uri'
+require 'ruby-progressbar'
+
 module RMD
   class Downloader
     attr_reader :link
@@ -7,7 +10,26 @@ module RMD
     end
 
     def download
-      agent.get(link).save(file_name)
+      progress_bar = ProgressBar.create(
+        starting_at: 0,
+        total: nil,
+        format: '%a %B %p%% %r KB/sec',
+        rate_scale: lambda { |rate| rate / 1024 }
+      )
+
+      content_length_proc = Proc.new { |content_length|
+        progress_bar.total = content_length
+      }
+
+      progress_proc = Proc.new { |bytes_transferred|
+        progress_bar.progress = bytes_transferred
+      }
+
+      open(link, "rb", content_length_proc: content_length_proc, progress_proc: progress_proc) do |page|
+        File.open(file_name, "wb") do |file|
+          file.write(page.read)
+        end
+      end
     end
 
     def self.download(link)
