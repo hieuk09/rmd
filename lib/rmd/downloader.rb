@@ -22,6 +22,9 @@ module RMD
       }
 
       progress_proc = Proc.new { |bytes_transferred|
+        if progress_bar.total && progress_bar.total < bytes_transferred
+          progress_bar.total = nil
+        end
         progress_bar.progress = bytes_transferred
       }
 
@@ -41,12 +44,6 @@ module RMD
     def file_name
       uri = URI.parse(link)
       File.basename(uri.path)
-    end
-
-    def agent
-      @agent ||= Mechanize.new do |agent|
-        agent.pluggable_parser.default = Mechanize::Download
-      end
     end
   end
 end

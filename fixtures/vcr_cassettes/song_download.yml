@@ -1,0 +1,186 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://db.gamefaqs.com/portable/3ds/file/fire_emblem_awakening_shop.txt
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 11 Jan 2015 03:50:11 GMT
+      Server:
+      - Apache
+      Last-Modified:
+      - Tue, 25 Nov 2014 20:35:34 GMT
+      Etag:
+      - '"2f86-508b4da5e8458"'
+      Accept-Ranges:
+      - bytes
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '2802'
+      Content-Type:
+      - text/plain; charset=ISO-8859-1
+    body:
+      encoding: UTF-8
+      string: "----------------------------------------------\r\n+Fire Emblem Awakening,
+        3DS - Map Shops Guide+\r\n----------------------------------------------\r\n
+        \                                             \r\nVersion 1.0                                  \r\n+++++++++++++++++++++++++++++++++++++++++++++\r\nIndex
+        \                               \r\n1: Version History                   [HISTOR]\r\n2:
+        Introduction                      [INTRO1]\r\n3:Main Chapters                      [MAIN00]\r\nSouthtown
+        \                           [MAIN01]\r\nWest of Yisstol                      [MAIN02]\r\nThe
+        Northroad                        [MAIN03]\r\nThe Longfort                         [MAIN04]\r\nArena
+        Ferox                          [MAIN05]\r\nBorder Pass                          [MAIN06]\r\nYisstol
+        \                             [MAIN07]\r\nBreakneck Pass                       [MAIN08]\r\nBorder
+        Sands                         [MAIN09]\r\nPlegia Courtyard                     [MAIN10]\r\nThe
+        Midmire                          [MAIN11]\r\nBorder Wastes                        [MAIN12]\r\nCarrion
+        Isle                         [MAIN13]\r\nThe Searoad                          [MAIN14]\r\nValm
+        Harbor                          [MAIN15]\r\nThe Mila Tree                        [MAIN16]\r\nFort
+        Steiger                         [MAIN17]\r\nThe Demon's Ingle                    [MAIN18]\r\nValm
+        Approach                        [MAIN19]\r\nValm Castle                          [MAIN20]\r\nPlegia
+        Castle                        [MAIN21]\r\nTable Approach                       [MAIN22]\r\nThe
+        Dragon's Table                   [MAIN23]\r\nMount Prism                          [MAIN24]\r\nOrigin
+        Peak                          [MAIN25]\r\n4:Paraloue Chapters                  [PARA00]\r\nThe
+        Farfort                          [PARA01]\r\nThe Twins' Turf                      [PARA02]\r\nPeacful
+        Village                      [PARA03]\r\nThe Twin's Hideout                   [PARA04]\r\nSage
+        Hamlet                          [PARA05]\r\nGreat Gate                           [PARA06]\r\nMila
+        Shrine Ruins                    [PARA07]\r\nDualing Grounds                      [PARA08]\r\nVerant
+        Forest                        [PARA09]\r\nMercenary Fortress                   [PARA10]\r\nWyern
+        Valley                         [PARA11]\r\nThe Ruins of Time                    [PARA12]\r\nLaw's
+        End                            [PARA13]\r\nDesert Oasis                         [PARA14]\r\nKidnapper's
+        Keep                     [PARA15]\r\nManor of Lost Souls                  [PARA16]\r\nDivine
+        Dragon Grounds                [PARA17]\r\nSea-king's Throne                    [PARA18]\r\nConqueror's
+        Whetstone                [PARA19]\r\nMountain Village                     [PARA20]\r\nWarrior's
+        Tomb                       [PARA21]\r\nWellspring of Truth                  [PARA22]\r\nGarden
+        of Giants                     [PARA23]\r\n5:Credits/Legal/Contact Info         [ENDING]\r\n+++++++++++++++++++++++++++++++++++++++++++++\r\nVersion
+        History                      [HISTOR]\r\n0.1:Made the Index and Legal Information\r\n1.0
+        Completed guide\r\n+++++++++++++++++++++++++++++++++++++++++++++\r\nIntroduction
+        \                        [INTRO1]\r\nThis guide is to help those with wanting
+        to\r\nknow where items can be bought.Ctrl f will \r\nhelp you find a specific
+        shop.\r\n+++++++++++++++++++++++++++++++++++++++++++++\r\nMain Chapters                        [MAIN00]\r\n
+        \                                    [MAIN01]\r\n:Southtown  :\r\nBronze Sword\r\nBronze
+        Lance\r\nBronze Axe  \r\nBronze Bow  \r\nFire        \r\n:           :\r\n
+        \                                    [MAIN02]\r\n:West of Yisstol:\r\nHeal
+        \           \r\nVulnerary       \r\n:               :\r\n                                     [MAIN03]\r\n:The
+        Northroad:\r\nFire          \r\nThunder       \r\nWind          \r\nFlux          \r\n:
+        \            :\r\n\r\n                                     [MAIN04]\r\n:The
+        Longfort :\r\nHeal          \r\nVulnerary     \r\nStrength Tonic\r\nDefense
+        Tonic \r\nReeking Box   \r\n:             :\r\n                                     [MAIN05]\r\n:Arena
+        Ferox:\r\nIron Lance  \r\nIron Bow    \r\nThunder     \r\n:           :\r\n
+        \                                    [MAIN06]\r\n:Border Pass:\r\nIron Sword
+        \ \r\nIron Axe    \r\nWind        \r\n:           :\r\n\r\n                                     [MAIN07]\r\n:Yisstol
+        \        :\r\nHeal             \r\nMend             \r\nVulnerary        \r\nMagic
+        Tonic      \r\nResistance Tonic \r\n:                :\r\n                                     [MAIN08]\r\n:Breakneck
+        Pass:\r\nIron Sword     \r\nJavelin         \r\nHand Axe       \r\nIron Bow
+        \      \r\nFire           \r\n:              :\r\n                                     [MAIN09]\r\n:Border
+        Sands:\r\nMend         \r\nConcoxtion   \r\nSkill tonic  \r\nSpeed tonic  \r\nLuck
+        tonic     \r\n:            :\r\n                                     [MAIN10]\r\n:Plegia
+        Courtyard:\r\nSteel Sword      \r\nSteel Lance      \r\nSteel Axe        \r\nSteel
+        Bow        \r\nFlux             \r\n:                :\r\n\r\n                                     [MAIN11]\r\n:The
+        Midmire:\r\nIron Lance  \r\nJavelin     \r\nHand Axe    \r\nIron Bow    \r\n:
+        \          :\r\n\r\n                                     [MAIN12]\r\n:Border
+        Wastes:\r\nIron Sword    \r\nIron Bow      \r\nFire          \r\nThunder       \r\nWind
+        \         \r\n:             :\r\n                                     [MAIN13]\r\n:Port
+        Ferox:\r\nMend       \r\nRescue     \r\nDragonstone\r\nBeaststone \r\nMaster
+        Seal\r\n:          :\r\n\r\n                                     [MAIN14]\r\n:Carrion
+        Isle:\r\nElFire       \r\nElThunder    \r\nElWind       \r\nNosferatu    \r\nReeking
+        Box  \r\n:            :\r\n                                     [MAIN15]\r\n:The
+        Searoad:\r\nSteel Lance \r\nSilver Lance\r\nJavelin     \r\nSteel Bow   \r\nSilver
+        Bow  \r\n:           :\r\n                                     [MAIN16]\r\n:Valm
+        Harbor:\r\nSteel Sword \r\nSilver Sword\r\nSteel Axe   \r\nSilver Axe  \r\nHand
+        Axe    \r\n:           :\r\n                                     [MAIN17]\r\n:The
+        Mila Tree:\r\nHeal          \r\nWard          \r\nPure Water    \r\nHP Tonic
+        \     \r\nSecond Seal   \r\n:             :\r\n                                     [MAIN18]\r\n:Fort
+        Steiger:\r\nSilver Sword \r\nSilver Lance \r\nSilver Axe   \r\nSilver Bow
+        \  \r\nArcfire      \r\n:            :\r\n                                     [MAIN19]\r\n:The
+        Demon's Ingle:\r\nPhyic              \r\nRecover           \r\nWard              \r\nDragonstone
+        \      \r\nBeaststone        \r\n:                 :\r\n                                     [MAIN20]\r\n:Valm
+        Castle Approach:\r\nSilver Sword         \r\nKilling Edge         \r\nSilver
+        Bow           \r\nKiller Bow           \r\nRuin                 \r\n:                    :\r\n
+        \                                    [MAIN21]\r\n:Valm Castle:\r\nSilver Lance\r\nKiller
+        Lance\r\nSilver Axe  \r\nKiller Axe  \r\n:           :\r\n                                     [MAIN22]\r\n:Plegia
+        Castle:\r\nJavelin       \r\nHand Axe      \r\nArcfire       \r\nArcthunder
+        \   \r\nArcwind       \r\n:             :\r\n                                     [MAIN23]\r\n:Table
+        Approach:\r\nHeal           \r\nMend           \r\nRescue         \r\nWard
+        \          \r\nConcoction     \r\n:              :\r\n                                     [MAIN24]\r\n:The
+        Dragon's Table:\r\nPhyic              \r\nRecover            \r\nDragonstone+
+        \      \r\nBeaststone+        \r\nElxir              \r\n:                  :\r\n
+        \                                    [MAIN25]\r\n:Mount Prism:\r\nBolganone
+        \  \r\nThoron      \r\nReexcalibur \r\nWaste       \r\n:           :\r\n                                     [MAIN26]\r\n:Origin
+        Peak:\r\nBrave Sword \r\nBrave Lance \r\nBrave Axe   \r\nBrave Bow\r\nReeking
+        Box\r\n:           :\r\n+++++++++++++++++++++++++++++++++++++++++++++\r\nParaloue
+        Chapters                    [PARA00]\r\n                                     [PARA01]\r\n:The
+        Farfort:\r\nIron Sword\r\nIron Lance\r\nIron Axe\r\nIron Bow\r\n:           :\r\n
+        \                                    [PARA02]\r\n:The Twins' Turf:\r\nJavelin
+        \        \r\nHand Axe        \r\nFire            \r\nThunder         \r\nWind
+        \           \r\n:               :\r\n                                     [PARA03]\r\n:Peacful
+        Village:\r\nHeal            \r\nMend            \r\nVulnerary       \r\nConcoction\r\n:
+        \              :\r\n                                     [PARA04]\r\n:The
+        Twin's Hideout:\r\nSteel Sword        \r\nSteel Lance        \r\nSteel Axe
+        \         \r\nSteel Bow          \r\n:                  :\r\n                                     [PARA05]\r\n:Sage
+        Hamlet:\r\nIron Sword  \r\nSteel Sword \r\nSilver Sword\r\nKilling Edge\r\n:
+        \          :\r\n                                     [PARA06]\r\n:Great Gate:\r\nHeal
+        \      \r\nRescue     \r\nConcoction\r\nElixer     \r\nSecond Seal\r\n:          :\r\n
+        \                                    [PARA07]\r\n:Mila Shrine Ruins:\r\nHeal
+        \             \r\nMend              \r\nPhyic             \r\nRescue            \r\nWard
+        \             \r\n:                 :\r\n                                     [PARA08]\r\n:Dualing
+        Grounds:\r\nPhyic\r\nElixer\r\nHP Tonic\r\nLuck Tonic\r\nMaster Seal\r\n:
+        \              :\r\n                                     [PARA09]\r\n:Verant
+        Forest:\r\nIron Lance\r\nSteel Lance\r\nSliver Lance\r\nJavelin\r\nKiller
+        Lance\r\n:             :\r\n                                     [PARA10]\r\n:Mercenary
+        Fortress:\r\nRecover\r\nElixer\r\nMagic Tonic      \r\nResistance Tonic\r\nSecond
+        Seal\r\n:                  :\r\n                                     [PARA11]\r\n:Wyern
+        Valley:\r\nIron Axe\r\nSteel Axe\r\nSliver Axe\r\nHand Axe\r\nKiller Axe\r\n:
+        \           :\r\n                                     [PARA12]\r\n:The Ruins
+        of Time:\r\nHeal              \r\nMend\r\nConcoction\r\nElixer\r\nMaster Seal\r\n:
+        \                :\r\n                                     [PARA13]\r\n:Law's
+        End:\r\nBeaststone\r\nConcoction\r\nSkill tonic\r\nSpeed tonic\r\nMaster Seal\r\n:
+        \        :\r\n\r\n                                     [PARA14]\r\n:Desert
+        Oasis:\r\nElfire       \r\nElthunder    \r\nElwind       \r\nFlux         \r\nNosferatu
+        \   \r\n:            :\r\n                                     [PARA15]\r\n:Kidnapper's
+        Keep:\r\nIron Bow\r\nSteel Bow\r\nSilver Bow\r\nKiller Bow\r\n:                :\r\n
+        \                                    [PARA16]\r\n:Manor of Lost Souls:\r\nDragonstone\r\nConcoction\r\nStrength
+        Tonic\r\nDefense Tonic\r\nSecond Seal\r\n:                   :\r\n                                     [PARA17]\r\n:Divine
+        Dragon Grounds:\r\nArcfire       \r\nArcthunder    \r\nArcwind       \r\nNosferatu\r\nRuin\r\n:
+        \                    :\r\n                                     [PARA18]\r\n:Sea-king's
+        Throne:\r\nSilver Axe\r\nBrave Axe\r\nHammer\r\nDragonstone+       \r\nBeaststone+\r\n:
+        \                :\r\n                                     [PARA19]\r\n:Conqueror's
+        Whetstone:\r\nSilver Lance\r\nBrave Lance\r\nBeast Killer\r\nBlessed Lance\r\nThoron\r\n:
+        \                    :\r\n                                     [PARA20]\r\n:Mountain
+        Village:\r\nSilver Bow\r\nBrave Bow\r\nBlessed Bow\r\nRexcalibur\r\nWaste\r\n:
+        \               :\r\n                                     [PARA21]\r\n:Warrior's
+        Tomb:\r\nSliver Sword   \r\nBrave Sword    \r\nAmrorslayer    \r\nWyrmslayer
+        \    \r\nBolganone      \r\n:              :\r\n                                     [PARA22]\r\n:Wellspring
+        of Truth:\r\nPhyic               \r\nRecover             \r\nRescue              \r\nWard
+        \               \r\nElixer              \r\n:                   :\r\n                                     [PARA23]\r\n:Garden
+        of Giants:\r\nLevin Sword\r\nNoble Rapier\r\nShort Spear\r\nShort Axe\r\nLongbow\r\n:
+        \               :\r\n+++++++++++++++++++++++++++++++++++++++++++++\r\nConclusion/Contact
+        Info/Legal        [ENDING]\r\n+++++++++++++++++++++++++++++++++++++++++++++\r\nConclusion\r\n-----------------------------------------------------------------\r\nWell
+        felt like it took forever, again this was to help those find\r\nitems from
+        the shops because memorizing it is a pain.\r\n-----------------------------------------------------------------\r\nContact
+        Info\r\n-----------------------------------------------------------------\r\nIf
+        you have any questions or suggestions contact me at\r\noratigames@yahoo.com\r\n-----------------------------------------------------------------\r\nLegal
+        Stuff\r\n-----------------------------------------------------------------\r\nThis
+        may not be reproduced under any circumstances except for personal,\r\nprivate
+        use.  It may not be placed on any web site or otherwise distributed\r\npublicly
+        without advance written permission.  Use of this guide on any other \r\nwebsite
+        or as a part of any public display is strictly prohibited, and a \r\nviolation
+        of copyright.  Do not copy or alter information slightly from this \r\nguide,
+        and do not present it as your own. The only sites allowed to host this \r\ndocument
+        are GameFAQs.com and its affiliates."
+    http_version: 
+  recorded_at: Sun, 11 Jan 2015 03:50:27 GMT
+recorded_with: VCR 2.9.3

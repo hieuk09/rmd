@@ -14,25 +14,18 @@ describe RMD::Downloader do
 
   describe '#download' do
     let(:downloader) { described_class.new(link) }
-    let(:link) { 'www.example/xyz/abc.mp3' }
-    let(:file_name) { 'abc.mp3' }
-    let(:agent) { double('Mechanize') }
+    let(:link) { 'http://db.gamefaqs.com/portable/3ds/file/fire_emblem_awakening_shop.txt' }
+    let(:file_name) { 'fire_emblem_awakening_shop.txt' }
+    let(:content_length) { body.length }
+    let(:file_path) { File.expand_path("../../../#{file_name}", __FILE__) }
+    let(:result) { File.read(file_path) }
 
     it 'downloads' do
-      expect(downloader).to receive(:agent).and_return(agent)
-      expect(agent).to receive(:get).with(link).and_return(agent)
-      expect(agent).to receive(:save).with(file_name)
-      downloader.download
-    end
-  end
-
-  describe '#agent' do
-    let(:downloader) { described_class.new(nil) }
-    let(:agent) { downloader.send(:agent) }
-
-    it 'initializes mechanize agent' do
-      expect(agent).to be_a(Mechanize)
-      expect(agent.pluggable_parser.default).to eq Mechanize::Download
+      VCR.use_cassette("song download") do
+        downloader.download
+        expect(File.exists?(file_path)).to eq true
+      end
+      File.delete(file_path)
     end
   end
 end

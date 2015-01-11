@@ -17,10 +17,18 @@
 require 'byebug'
 require 'thor'
 require 'mechanize'
+require 'webmock/rspec'
+require 'vcr'
+
 spec_folder = File.dirname(__FILE__)
 root_folder = File.dirname(spec_folder)
 app_folder = File.join(root_folder, 'lib', '*', '*.rb')
 Dir[app_folder].each { |file| require file }
+
+VCR.configure do |config|
+  config.cassette_library_dir = "fixtures/vcr_cassettes"
+  config.hook_into :webmock
+end
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
