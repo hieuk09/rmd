@@ -12,14 +12,38 @@ module RMD
       end
 
       def fetch
-        if download_button
+        if key
           if response['error_message'] == 'Success'
             @data_link = response['data']['stream_url']
           else
-            @errors = "Can not get data from #{new_link}."
+            @errors = "#{response['error_message']}: #{new_link}"
           end
         else
-          @errors = "Can not find download button in page."
+          @errors = "The url does not contain the key."
+        end
+
+        unless success?
+          puts 'Try other ways to find the key...'
+          key = ''
+          page.search('script').each do |element|
+            if match_data = /NCTNowPlaying.intFlashPlayer\("flashPlayer", "song", "(.+)"\)\;/.match(element.text)
+              key = match_data.to_a.last
+              break
+            end
+          end
+
+          if key != ''
+            xml_url = "http://www.nhaccuatui.com/flash/xml?key1=#{key}"
+            puts xml_url
+            page = agent.get(xml_url)
+            xml_doc = Nokogiri::XML(page.body)
+            element = xml_doc.at_xpath('.//tracklist//location')
+            @data_link = element.text.strip
+
+            if @data_link != ''
+              @errors = nil
+            end
+          end
         end
       end
 
@@ -29,20 +53,15 @@ module RMD
 
       private
 
-      def page
-        @page ||= agent.get(link)
-      end
-
-      def button_css
-        '.btnDownload.download'
-      end
-
-      def download_button
-        @download_button ||= page.search(button_css).first
-      end
-
       def key
-        download_button.attr('key')
+        @key ||= uncached_key
+      end
+
+      def uncached_key
+        uri = URI.parse(link)
+        if data = /\.(\S+)\./.match(uri.path)
+          data.to_a.last
+        end
       end
 
       def new_link
@@ -55,6 +74,10 @@ module RMD
 
       def response
         @response ||= JSON.parse(new_page.body)
+      end
+
+      def page
+        @page ||= agent.get(link)
       end
 
       def agent

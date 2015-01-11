@@ -27,12 +27,10 @@ module RMD
           progress_bar.increment
           puts 'Successfully download!'
         end
+      end
 
-        playlist.errors.each do |error|
-          puts error
-        end
-      else
-        puts "Errors: #{playlist.errors.join(' ')}."
+      playlist.errors.each do |error|
+        puts error
       end
     end
 
