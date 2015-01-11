@@ -3,22 +3,18 @@ require 'mechanize'
 module RMD
   module NCT
     class Song
-      attr_reader :page, :errors, :link
+      attr_reader :errors, :link, :data_link
 
       ROOT_URL = 'http://www.nhaccuatui.com/download/song'
 
-      def initialize(page)
-        @page = page
+      def initialize(link)
+        @link = link
       end
 
       def fetch
         if download_button
-          puts new_link
-          new_page = agent.get(new_link)
-          response = JSON.parse(new_page.body)
-
-          if response_success?(response)
-            @link = link_from_response(response)
+          if response['error_message'] == 'Success'
+            @data_link = response['data']['stream_url']
           else
             @errors = "Can not get data from #{new_link}."
           end
@@ -32,6 +28,10 @@ module RMD
       end
 
       private
+
+      def page
+        @page ||= agent.get(link)
+      end
 
       def button_css
         '.btnDownload.download'
@@ -49,12 +49,12 @@ module RMD
         @new_link ||= "#{ROOT_URL}/#{key}"
       end
 
-      def response_success?(response)
-        response['error_message'] == 'Success'
+      def new_page
+        @new_page ||= agent.get(new_link)
       end
 
-      def link_from_response(response)
-        response['data']['stream_url']
+      def response
+        @response ||= JSON.parse(new_page.body)
       end
 
       def agent

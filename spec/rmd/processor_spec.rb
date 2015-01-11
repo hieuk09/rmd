@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe RMD::Processor do
+  let(:processor) { described_class.new(link) }
+  let(:link) { 'www.example/xyz/abc.mp3' }
+
   describe '.process' do
     let(:link) { 'www.example/xyz/abc.mp3' }
     let(:processor) { double('RMD::processor') }
@@ -13,55 +16,47 @@ describe RMD::Processor do
   end
 
   describe '#process' do
-    let(:processor) { described_class.new(link) }
-    let(:link) { 'www.example/xyz/abc.mp3' }
-    let(:agent) { double('Mechanize') }
-    let(:page) { double('Page') }
-    let(:errors) { 'errors' }
-    let(:data_link) { 'link' }
-    let(:song) { instance_double('RMD::NCT::Song',
-                                 success?: success,
-                                 link: data_link,
-                                 errors: errors) }
+    let(:errors) { ['errors'] }
+    let(:songs) { [song] }
+    let(:song) { 'song.mp3' }
+    let(:playlist) { instance_double('RMD::NCT::Playlist', songs: songs,
+                                     errors: errors,
+                                     success?: success) }
 
     before do
-      expect(processor).to receive(:agent).and_return(agent)
-      expect(agent).to receive(:get).with(link).and_return(page)
-      expect(RMD::NCT::Song).to receive(:new).with(page).and_return(song)
-      expect(song).to receive(:fetch)
+      expect(RMD::Factory).to receive(:build).with(link).and_return(playlist)
+      expect(playlist).to receive(:fetch)
     end
 
-    context 'when fetching song is success' do
+    context 'when fetching songs is success' do
       let(:success) { true }
 
-      it 'downloads the song' do
-        expect(processor).to receive(:download).with(data_link)
-        expect{
+      it 'downloads the songs' do
+        expect(processor).to receive(:download).with(song)
+        expect {
           processor.process
-        }.to output("Start processing #{link}...\nDownload link #{data_link}...\nSuccessfully download!\n")
-          .to_stdout
+        }.to output("Start processing #{link}...\nDownload link song.mp3...\nSuccessfully download!\nerrors\n").to_stdout
       end
     end
 
-    context 'when fetching song is not success' do
+    context 'when fetching songs is not success' do
       let(:success) { false }
 
-      it 'does not download the song' do
+      it 'does not download the songs' do
         expect(processor).not_to receive(:download)
-        expect{
+        expect {
           processor.process
-        }.to output("Start processing #{link}...\nErrors: #{song.errors}.\n")
-          .to_stdout
+        }.to output("Start processing #{link}...\nErrors: errors.\n").to_stdout
       end
     end
   end
 
-  describe '#agent' do
-    let(:downloader) { described_class.new(nil) }
-    let(:agent) { downloader.send(:agent) }
+  describe '#download' do
+    let(:data_link) { 'data_link' }
 
-    it 'initializes mechanize agent' do
-      expect(agent).to be_a(Mechanize)
+    it 'downloads data' do
+      expect(RMD::Downloader).to receive(:download).with(data_link)
+      processor.send(:download, data_link)
     end
   end
 end

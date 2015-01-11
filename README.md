@@ -22,10 +22,12 @@ TODO: Write usage instructions here
 
 ## Features
 
-- Download songs/playlists from NCT, Mp3 Zing
-- Read a file to get list of links to download
-- Visual progress bar for download
-- Specify download folder
+- [x] Download songs/playlists from NCT
+- [ ] Download songs/playlist from Zing MP3
+- [ ] Read a file to get list of links to download
+- [x] Visual progress bar for download
+- [ ] Specify download folder
+- [ ] Cache data
 
 ## Contributing
 

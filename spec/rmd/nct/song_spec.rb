@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe RMD::NCT::Song do
-  let(:song) { described_class.new(page) }
-  let(:page) { double('Page') }
+  let(:song) { described_class.new(link) }
+  let(:link) { 'www.nhaccuatui/bai-hat/song.mp3' }
 
   describe '#fetch' do
     before do
@@ -11,37 +11,35 @@ describe RMD::NCT::Song do
 
     context 'when download button exists' do
       let(:download_button) { double('Button') }
-      let(:agent) { instance_double('Mechanize') }
-      let(:new_page) { double('Page', body: body) }
-      let(:body) { "{\"abc\":\"xyz\"}" }
-      let(:response) { { 'abc' => 'xyz' } }
-      let(:new_link) { 'new_link' }
+      let(:stream_url) { 'www.download.com' }
+      let(:response) { {
+        'error_message' => error_message,
+        'data' => {
+          'stream_url' => stream_url
+        }
+      } }
 
       before do
-        allow(song).to receive(:new_link).and_return(new_link)
-        expect(song).to receive(:agent).and_return(agent)
-        expect(agent).to receive(:get).with(new_link).and_return(new_page)
-        expect(song).to receive(:response_success?)
-          .with(response).and_return(response_success)
+        allow(song).to receive(:response).and_return(response)
       end
 
       context 'when response is success' do
+        let(:error_message) { 'Success' }
         let(:link_from_response) { 'link_from_response' }
-        let(:response_success) { true }
 
         it 'fetchs' do
-          expect(song).to receive(:link_from_response)
-            .with(response).and_return(link_from_response)
-          expect { song.fetch }.to output("#{new_link}\n").to_stdout
-          expect(song.link).to eq link_from_response
+          song.fetch
+          expect(song.data_link).to eq stream_url
         end
       end
 
       context 'when response is not success' do
-        let(:response_success) { false }
+        let(:error_message) { 'error' }
+        let(:new_link) { 'new_link' }
 
         it 'returns errors' do
-          expect { song.fetch }.to output("#{new_link}\n").to_stdout
+          expect(song).to receive(:new_link).and_return(new_link)
+          song.fetch
           expect(song.errors).to eq 'Can not get data from new_link.'
         end
       end
@@ -80,13 +78,28 @@ describe RMD::NCT::Song do
     end
   end
 
+  describe '#page' do
+    let(:agent) { instance_double('Mechanize') }
+    let(:page) { double('Page') }
+    subject { song.send(:page) }
+
+    before do
+      expect(song).to receive(:agent).and_return(agent)
+      expect(agent).to receive(:get).with(link).and_return(page)
+    end
+
+    it { is_expected.to eq page }
+  end
+
   describe '#download_button' do
     let(:button_css) { '.btnDownload.download' }
     let(:button) { double('Button') }
     let(:buttons) { [button] }
+    let(:page) { double('Page') }
     subject { song.send(:download_button) }
 
     before do
+      expect(song).to receive(:page).and_return(page)
       expect(page).to receive(:search).with(button_css).and_return(buttons)
     end
 
@@ -117,26 +130,32 @@ describe RMD::NCT::Song do
     it { is_expected.to eq 'http://www.nhaccuatui.com/download/song/XYZ' }
   end
 
-  describe '#response_success?' do
-    let(:response) { { 'error_message' => error_message } }
-    subject { song.send(:response_success?, response) }
+  describe '#new_page' do
+    let(:new_link) { 'www.nhaccuatui.com/bai-hat/new_song.mp3' }
+    let(:agent) { instance_double('Mechanize') }
+    let(:page) { double('Page') }
+    subject { song.send(:new_page) }
 
-    context 'when error message is success' do
-      let(:error_message) { 'Success' }
-      it { is_expected.to eq true }
+    before do
+      expect(song).to receive(:agent).and_return(agent)
+      expect(song).to receive(:new_link).and_return(new_link)
+      expect(agent).to receive(:get).with(new_link).and_return(page)
     end
 
-    context 'when error message is not success' do
-      let(:error_message) { 'error' }
-      it { is_expected.to eq false }
-    end
+    it { is_expected.to eq page }
   end
 
-  describe '#link_from_response' do
-    let(:response) { { 'data' => { 'stream_url' => url } } }
-    let(:url) { 'url' }
-    subject { song.send(:link_from_response, response) }
-    it { is_expected.to eq url }
+  describe '#response' do
+    let(:new_page) { double('Page', body: body) }
+    let(:body) { "{\"abc\":\"xyz\"}" }
+    let(:response) { { 'abc' => 'xyz' } }
+    subject { song.send(:response) }
+
+    before do
+      expect(song).to receive(:new_page).and_return(new_page)
+    end
+
+    it { is_expected.to eq response }
   end
 
   describe '#agent' do
