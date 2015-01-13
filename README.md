@@ -1,4 +1,6 @@
-# Rmd
+# RMD
+
+[![Gem Version](https://badge.fury.io/rb/rmd.svg)](http://badge.fury.io/rb/rmd)
 
 This is a simple CLI music downloader for Vietnamese music site.
 
