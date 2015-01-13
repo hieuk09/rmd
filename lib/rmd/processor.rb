@@ -16,16 +16,9 @@ module RMD
       playlist.fetch
 
       if playlist.success?
-        progress_bar = ProgressBar.create(
-          starting_at: 0,
-          total: playlist.songs.count
-        )
-
         playlist.songs.each do |song|
           puts "Download link #{song}..."
           download(song)
-          progress_bar.increment
-          puts 'Successfully download!'
         end
       end
 
