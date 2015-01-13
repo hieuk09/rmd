@@ -10,11 +10,11 @@ module RMD
     end
 
     def songs
-      [song.data_link]
+      [song.data_link].compact
     end
 
     def errors
-      [song.errors]
+      [song.errors].compact
     end
   end
 end

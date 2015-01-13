@@ -10,10 +10,12 @@ module RMD
     end
 
     def download
+      puts file_name.green
+
       progress_bar = ProgressBar.create(
         starting_at: 0,
         total: nil,
-        format: '%a %B %p%% %r KB/sec',
+        format: "%a %B %p%% %r KB/sec",
         rate_scale: lambda { |rate| rate / 1024 }
       )
 

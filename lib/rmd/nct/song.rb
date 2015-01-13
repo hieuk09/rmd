@@ -15,11 +15,7 @@ module RMD
           getter.fetch
           @data_link = getter.data_link
           @errors = getter.errors
-          if @errors
-            puts @errors
-          else
-            break
-          end
+          break unless @errors
         end
       end
 

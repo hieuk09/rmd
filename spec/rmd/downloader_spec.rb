@@ -22,7 +22,9 @@ describe RMD::Downloader do
 
     it 'downloads' do
       VCR.use_cassette("song download") do
-        downloader.download
+        expect {
+          downloader.download
+        }.to output("\e[0;32;49m#{file_name}\e[0m\n").to_stdout
         expect(File.exists?(file_path)).to eq true
       end
       File.delete(file_path)

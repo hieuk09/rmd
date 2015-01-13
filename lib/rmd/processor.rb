@@ -11,19 +11,18 @@ module RMD
     end
 
     def process
-      puts "Start processing #{link}..."
+      puts "Start processing #{link}...".green
       playlist = RMD::Factory.build(link)
       playlist.fetch
 
       if playlist.success?
         playlist.songs.each do |song|
-          puts "Download link #{song}..."
           download(song)
         end
       end
 
       playlist.errors.each do |error|
-        puts error
+        puts error.red
       end
     end
 
@@ -31,8 +30,8 @@ module RMD
       begin
         new(link).process
       rescue => e
-        puts e.message
-        puts 'Errors! Can not continue!'
+        puts e.message.red
+        puts 'Errors! Can not continue!'.red
       end
     end
 

@@ -35,7 +35,7 @@ describe RMD::Processor do
         expect(processor).to receive(:download).with(song)
         expect {
           processor.process
-        }.to output("Start processing #{link}...\nDownload link song.mp3...\nerrors\n").to_stdout
+        }.to output("\e[0;32;49mStart processing #{link}...\e[0m\n\e[0;31;49merrors\e[0m\n").to_stdout
       end
     end
 
@@ -46,7 +46,7 @@ describe RMD::Processor do
         expect(processor).not_to receive(:download)
         expect {
           processor.process
-        }.to output("Start processing #{link}...\nerrors\n").to_stdout
+        }.to output("\e[0;32;49mStart processing #{link}...\e[0m\n\e[0;31;49merrors\e[0m\n").to_stdout
       end
     end
   end

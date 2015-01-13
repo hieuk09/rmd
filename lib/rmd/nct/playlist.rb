@@ -14,7 +14,8 @@ module RMD
           @errors = []
           progress_bar = ProgressBar.create(
             starting_at: 0,
-            total: song_elements.count
+            total: song_elements.count,
+            format: '%c / %C Songs %B %p%%'
           )
 
           @songs = song_elements.inject([]) do |result, element|

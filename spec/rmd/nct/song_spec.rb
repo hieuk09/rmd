@@ -23,10 +23,7 @@ describe RMD::NCT::Song do
       expect(getter_1).to receive(:fetch)
       expect(getter_2).to receive(:fetch)
       expect(getter_3).not_to receive(:fetch)
-
-      expect {
-        song.fetch
-      }.to output("errors\n").to_stdout
+      song.fetch
     end
   end
 
