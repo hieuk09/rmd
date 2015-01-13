@@ -18,8 +18,10 @@ require 'byebug'
 require 'webmock/rspec'
 require 'vcr'
 require 'simplecov'
+require 'coveralls'
 require 'rmd'
 
+Coveralls.wear!
 SimpleCov.start
 
 VCR.configure do |config|
