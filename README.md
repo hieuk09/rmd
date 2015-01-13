@@ -1,6 +1,8 @@
 # RMD
 
 [![Gem Version](https://badge.fury.io/rb/rmd.svg)](http://badge.fury.io/rb/rmd)
+[![Coverage Status](https://coveralls.io/repos/hieuk09/rmd/badge.png?branch=master)](https://coveralls.io/r/hieuk09/rmd?branch=master)
+[![Build Status](https://travis-ci.org/hieuk09/rmd.svg?branch=master)](https://travis-ci.org/hieuk09/rmd)
 
 This is a simple CLI music downloader for Vietnamese music site.
 
