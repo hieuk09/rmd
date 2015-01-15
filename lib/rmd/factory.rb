@@ -1,6 +1,8 @@
 require 'rmd/song_playlist_adapter'
 require 'rmd/nct/song'
 require 'rmd/nct/playlist'
+require 'rmd/zing/song'
+require 'rmd/zing/playlist'
 
 module RMD
   class Factory
@@ -18,6 +20,13 @@ module RMD
           RMD::SongPlaylistAdapter.new(RMD::NCT::Song.new(link))
         when /playlist/
           RMD::NCT::Playlist.new(link)
+        end
+      when /mp3\.zing\.vn/
+        case link
+        when /bai-hat/
+          RMD::SongPlaylistAdapter.new(RMD::Zing::Song.new(link))
+        when /album|playlist/
+          RMD::Zing::Playlist.new(link)
         end
       end
     end

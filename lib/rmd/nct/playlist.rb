@@ -1,13 +1,8 @@
-require 'mechanize'
+require 'rmd/base/playlist'
 
 module RMD
   module NCT
-    class Playlist
-      attr_reader :errors, :link, :songs
-
-      def initialize(link)
-        @link = link
-      end
+    class Playlist < RMD::Base::Playlist
 
       def fetch
         if song_elements.count > 0
@@ -53,10 +48,6 @@ module RMD
 
       def page
         @page ||= agent.get(link)
-      end
-
-      def agent
-        agent ||= Mechanize.new
       end
     end
   end
