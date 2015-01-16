@@ -20,6 +20,7 @@ require 'vcr'
 require 'simplecov'
 require 'coveralls'
 require 'rmd'
+Dir[__dir__ + '/support/**/*.rb'].each { |f| require f }
 
 Coveralls.wear!
 SimpleCov.start
@@ -101,4 +102,23 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+end
+
+def capture_io(&block)
+  original_stdout = $stdout
+  original_progressbar_stdout = ProgressBar::Output::DEFAULT_OUTPUT_STREAM
+  $stdout = fake = StringIO.new
+  redef_without_warning(ProgressBar::Output, 'DEFAULT_OUTPUT_STREAM', $stdout)
+  begin
+    yield
+  ensure
+    redef_without_warning(ProgressBar::Output, 'DEFAULT_OUTPUT_STREAM', original_progressbar_stdout)
+    $stdout = original_stdout
+  end
+  fake.string
+end
+
+def redef_without_warning(klass, const, value)
+  klass.send(:remove_const, const) if klass.const_defined?(const)
+  klass.const_set(const, value)
 end

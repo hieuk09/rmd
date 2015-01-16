@@ -24,7 +24,7 @@ describe RMD::NCT::Playlist do
       end
 
       it 'fetchs all the song from the playlist' do
-        playlist.fetch
+        capture_io { playlist.fetch }
         expect(playlist.songs).to eq [song_link]
         expect(playlist.errors).to eq [errors]
       end
