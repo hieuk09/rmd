@@ -8,7 +8,10 @@ module RMD
       end
 
       def fetch; end
-      def success?; end
+
+      def success?
+        !!data_link && data_link != ''
+      end
     end
   end
 end

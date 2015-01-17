@@ -17,7 +17,7 @@ module RMD
 
         def uncached_key
           page.search('script').each do |element|
-            if match_data = /NCTNowPlaying.intFlashPlayer\("flashPlayer", "song", "(.+)"\)\;/.match(element.text)
+            if match_data = regex.match(element.text)
               return match_data.to_a.last
             end
           end
@@ -43,6 +43,10 @@ module RMD
 
         def element
           @element ||= response.at_xpath('.//tracklist//location')
+        end
+
+        def regex
+          /NCTNowPlaying.intFlashPlayer\("flashPlayer", "song", "(.+)"\)\;/
         end
       end
     end

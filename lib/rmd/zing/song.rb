@@ -4,18 +4,41 @@ require 'rmd/zing/utils/correct_url'
 module RMD
   module Zing
     class Song < RMD::Base::Song
+
       def fetch
-        #link = 'http://mp3.zing.vn/bai-hat/Co-Khi-Hoai-Lam/ZW6EA7UW.html'
-        agent = Mechanize.new
-        page = agent.get(link)
-        script = page.search('.detail-function script')
-        regex = /http\:\/\/mp3.zing.vn\/download\/song\/\S+\/\w+/
-        data = regex.match(script.text)
-        @data_link = RMD::Zing::Utils::CorrectUrl.correct(data.to_s)
+        if new_link
+          @data_link = RMD::Zing::Utils::CorrectUrl.correct(new_link)
+        else
+          @errors = 'Can not get song from this link!'
+        end
       end
 
-      def success?
-        data_link && data_link != ''
+      private
+
+      def agent
+        @agent ||= Mechanize.new
+      end
+
+      def page
+        @page ||= agent.get(link)
+      end
+
+      def regex
+        /http\:\/\/mp3.zing.vn\/download\/song\/\S+\/\w+/
+      end
+
+      def new_link
+        @new_link ||= uncached_new_link
+      end
+
+      def uncached_new_link
+        page.search('.detail-function script').each do |element|
+          if match_data = regex.match(element.text)
+            return match_data.to_s
+          end
+        end
+
+        nil
       end
     end
   end

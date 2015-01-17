@@ -21,4 +21,19 @@ describe RMD::Downloader do
     let(:file_path) { File.expand_path("../../../#{file_name}", __FILE__) }
     it_behaves_like 'download'
   end
+
+  describe '#file_name' do
+    let(:downloader) { described_class.new(link) }
+    subject { downloader.send(:file_name) }
+
+    context 'when link does not have file name' do
+      let(:link) { 'www.example.com/playlist/abc.mp3' }
+      it { is_expected.to eq 'abc.mp3' }
+    end
+
+    context 'when link have file name' do
+      let(:link) { 'www.example.com/playlist/abc.mp3?filename=abc%20xyz.mp3' }
+      it { is_expected.to eq 'abc xyz.mp3' }
+    end
+  end
 end

@@ -31,7 +31,7 @@ describe RMD::NCT::Song do
     subject { song.success? }
 
     before do
-      expect(song).to receive(:data_link).and_return(data_link)
+      allow(song).to receive(:data_link).and_return(data_link)
     end
 
     context 'when datalink is present' do

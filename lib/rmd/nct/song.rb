@@ -15,10 +15,6 @@ module RMD
         end
       end
 
-      def success?
-        !!data_link
-      end
-
       private
 
       def getters

@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: head
+    uri: http://www.nhaccuatui.com/download/song/tFBwsJKDGQX9
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 17 Jan 2015 10:08:50 GMT
+      Set-Cookie:
+      - JSESSIONID=41vid67sp733a3vpr15ltrh2;Path=/
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      P3p:
+      - CP='NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM'
+      Content-Length:
+      - '275'
+      Connection:
+      - close
+      Server:
+      - nginx+
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Sat, 17 Jan 2015 10:09:18 GMT
+recorded_with: VCR 2.9.3

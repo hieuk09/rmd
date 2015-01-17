@@ -28,6 +28,8 @@ module RMD
         when /album|playlist/
           RMD::Zing::Playlist.new(link)
         end
+      else
+        raise 'Your url is not valid. Please check again.'
       end
     end
 

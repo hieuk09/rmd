@@ -6,21 +6,15 @@ module RMD
     class Playlist < RMD::Base::Playlist
 
       def fetch
-        #link = 'http://mp3.zing.vn/album/Tinh-Khuc-Mot-Thoi-Vol-1-Quoc-Thien/ZWZBBW0C.html'
-        agent = Mechanize.new
-        page = agent.get(link)
-        elements = page.search('._btnDownload')
-        @songs = elements.map do |element|
-          RMD::Zing::Utils::CorrectUrl.correct(element.attr('href'))
-        end.take(2)
+        calculate_progress do |link|
+          @songs << RMD::Zing::Utils::CorrectUrl.correct(link)
+        end
       end
 
-      def success?
-        songs && songs.count > 0
-      end
+      private
 
-      def errors
-        []
+      def song_css
+        '._btnDownload'
       end
     end
   end
