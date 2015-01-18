@@ -44,8 +44,17 @@ module RMD
     private
 
     def file_name
+      @file_name ||= uncached_file_name
+    end
+
+    def uncached_file_name
       uri = URI.parse(link)
-      File.basename(uri.path)
+      name = CGI::parse(uri.query.to_s)['filename'].first
+      if name
+        name
+      else
+        File.basename(uri.path)
+      end
     end
   end
 end

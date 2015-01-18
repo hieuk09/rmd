@@ -1,14 +1,10 @@
+require 'rmd/base/song'
 require 'rmd/nct/getter/key_from_page'
 require 'rmd/nct/getter/key_from_url'
 
 module RMD
   module NCT
-    class Song
-      attr_reader :errors, :link, :data_link
-
-      def initialize(link)
-        @link = link
-      end
+    class Song < RMD::Base::Song
 
       def fetch
         getters.each do |getter|
@@ -17,10 +13,6 @@ module RMD
           @errors = getter.errors
           break unless @errors
         end
-      end
-
-      def success?
-        !!data_link
       end
 
       private

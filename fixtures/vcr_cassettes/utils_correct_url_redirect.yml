@@ -1,0 +1,41 @@
+---
+http_interactions:
+- request:
+    method: head
+    uri: http://mp3.zing.vn/download/song/Bird-TV-Size-Yuya-Matsushita/ZHJntZGsBidFQQQTLDxyDHkG
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 302
+      message: Moved Temporarily
+    headers:
+      Server:
+      - VNG-MP3-APPS-199
+      - nginx
+      Date:
+      - Sat, 17 Jan 2015 10:06:52 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Connection:
+      - close
+      Set-Cookie:
+      - __noauth=b97ebcc13351ac8e7718eef6794298f7; expires=Fri, 17-Apr-2015 10:06:52
+        GMT
+      Location:
+      - http://dl2.mp3.zdn.vn/fsdd1131lwwjA/74548e9982bf8c91fdbf7939139a5bb0/54ba2490/2011/06/05/d/f/dfed7ed9a9ed91387af6062db606e72f.mp3?filename=Bird
+        TV Size - Yuya Matsushita.mp3
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Sat, 17 Jan 2015 10:07:20 GMT
+recorded_with: VCR 2.9.3

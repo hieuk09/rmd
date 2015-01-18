@@ -14,20 +14,26 @@ describe RMD::Downloader do
 
   describe '#download' do
     let(:downloader) { described_class.new(link) }
+    let(:run_method) { downloader.download }
+    let(:scenario) { 'song download' }
     let(:link) { 'http://db.gamefaqs.com/portable/3ds/file/fire_emblem_awakening_shop.txt' }
     let(:file_name) { 'fire_emblem_awakening_shop.txt' }
-    let(:content_length) { body.length }
     let(:file_path) { File.expand_path("../../../#{file_name}", __FILE__) }
-    let(:result) { File.read(file_path) }
+    it_behaves_like 'download'
+  end
 
-    it 'downloads' do
-      VCR.use_cassette("song download") do
-        expect {
-          downloader.download
-        }.to output("\e[0;32;49m#{file_name}\e[0m\n").to_stdout
-        expect(File.exists?(file_path)).to eq true
-      end
-      File.delete(file_path)
+  describe '#file_name' do
+    let(:downloader) { described_class.new(link) }
+    subject { downloader.send(:file_name) }
+
+    context 'when link does not have file name' do
+      let(:link) { 'www.example.com/playlist/abc.mp3' }
+      it { is_expected.to eq 'abc.mp3' }
+    end
+
+    context 'when link have file name' do
+      let(:link) { 'www.example.com/playlist/abc.mp3?filename=abc%20xyz.mp3' }
+      it { is_expected.to eq 'abc xyz.mp3' }
     end
   end
 end
