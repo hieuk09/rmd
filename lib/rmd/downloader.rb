@@ -1,12 +1,14 @@
 require 'open-uri'
+require 'fileutils'
 require 'ruby-progressbar'
 
 module RMD
   class Downloader
-    attr_reader :link
+    attr_reader :link, :options
 
-    def initialize(link)
+    def initialize(link, options = {})
       @link = link
+      @options = options
     end
 
     def download
@@ -31,17 +33,26 @@ module RMD
       }
 
       open(link, "rb", content_length_proc: content_length_proc, progress_proc: progress_proc) do |page|
-        File.open(file_name, "wb") do |file|
+        File.open(file_path, "wb") do |file|
           file.write(page.read)
         end
       end
     end
 
-    def self.download(link)
-      new(link).download
+    def self.download(link, options = {})
+      new(link, options).download
     end
 
     private
+
+    def file_path
+      if options[:folder]
+        FileUtils.mkdir_p(options[:folder]) unless File.directory?(options[:folder])
+        File.join(options[:folder], file_name)
+      else
+        file_name
+      end
+    end
 
     def file_name
       @file_name ||= uncached_file_name

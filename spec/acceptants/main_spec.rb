@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe RMD::Main do
   describe '#download' do
-    let(:run_method) { RMD::Processor.process(link) }
+    let(:options) { {} }
+    let(:run_method) { RMD::Processor.process(link, options) }
     let(:file_path) { File.expand_path("../../../#{file_name}", __FILE__) }
 
     context 'when downloads song from nhaccuatui' do
@@ -32,6 +33,22 @@ describe RMD::Main do
       let(:file_name) { 'sharp TV Size - Negoto.mp3' }
       let(:scenario) { 'zing playlist' }
       it_behaves_like 'download'
+    end
+
+    context 'when downloads song with options' do
+      let(:link) { 'http://mp3.zing.vn/bai-hat/Bird-TV-Size-Yuya-Matsushita/ZWZCO98B.html' }
+      let(:file_name) { 'Bird TV Size - Yuya Matsushita.mp3' }
+      let(:scenario) { 'zing song' }
+      let(:options) { { folder: 'tmp' } }
+      let(:file_path) { File.expand_path("../../../tmp/#{file_name}", __FILE__) }
+
+      it 'downloads and put to correct folder' do
+        VCR.use_cassette(scenario) do
+          capture_io { run_method }
+          expect(File.exists?(file_path)).to eq true
+        end
+        File.delete(file_path)
+      end
     end
   end
 end
