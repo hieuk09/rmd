@@ -48,10 +48,11 @@ Time: 00:00:03 =================================================================
 
 - [x] Download songs/playlists from NCT
 - [x] Download songs/playlist from Zing MP3
-- [ ] Read a file to get list of links to download
 - [x] Visual progress bar for download
-- [ ] Specify download folder
+- [x] Specify download folder
+- [ ] Multi-thread
 - [ ] Cache data
+- [ ] Read a file to get list of links to download
 
 ## Contributing
 

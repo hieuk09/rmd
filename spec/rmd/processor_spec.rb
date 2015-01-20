@@ -9,7 +9,7 @@ describe RMD::Processor do
     let(:processor) { double('RMD::processor') }
 
     it 'processes' do
-      expect(described_class).to receive(:new).with(link).and_return(processor)
+      expect(described_class).to receive(:new).with(link, {}).and_return(processor)
       expect(processor).to receive(:process)
       described_class.process(link)
     end
@@ -55,7 +55,7 @@ describe RMD::Processor do
     let(:data_link) { 'data_link' }
 
     it 'downloads data' do
-      expect(RMD::Downloader).to receive(:download).with(data_link)
+      expect(RMD::Downloader).to receive(:download).with(data_link, {})
       processor.send(:download, data_link)
     end
   end

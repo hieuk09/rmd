@@ -4,10 +4,11 @@ require 'ruby-progressbar'
 
 module RMD
   class Processor
-    attr_reader :link
+    attr_reader :link, :options
 
-    def initialize(link)
+    def initialize(link, options = {})
       @link = link
+      @options = options
     end
 
     def process
@@ -26,9 +27,9 @@ module RMD
       end
     end
 
-    def self.process(link)
+    def self.process(link, options = {})
       begin
-        new(link).process
+        new(link, options).process
       rescue => e
         puts e.message.red
         puts 'Errors! Can not continue!'.red
@@ -38,7 +39,7 @@ module RMD
     private
 
     def download(data_link)
-      RMD::Downloader.download(data_link)
+      RMD::Downloader.download(data_link, options)
     end
   end
 end
