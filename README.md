@@ -18,9 +18,12 @@ Install it as:
 ## Usage
 
 ```shell
-Commands:
-  rmd download [LINK]  # Dowload your music from a specific link
-  rmd help [COMMAND]   # Describe available commands or one specific command
+Usage:
+  rmd download [LINK]
+
+  Options:
+    -d, [--folder=FOLDER]  # Choose specific folder to put the downloaded file
+    [--fast], [--no-fast]  # Use multithread to enable faster download, default: false
 ```
 
 ##### Download a song
@@ -44,13 +47,29 @@ LeBeinQiuFailMal-MozartLoperaRock_4asqw.mp3
 Time: 00:00:03 ============================================================================================== 100% 902 KB/sec
 ```
 
+##### Download in multithread
+
+This will enhance your speed when download playlist with many songs.
+However, the progress output for the songs will not really correct.
+
+```shell
+$ bundle exec rmd download http://mp3.zing.vn/playlist/dev-playlist-zid-sincepast/IO0E698Z.html --fast
+Start processing http://mp3.zing.vn/playlist/dev-playlist-zid-sincepast/IO0E698Z.html...
+2 / 2 Songs =====================================================================================
+100%
+Bird TV Size - Yuya Matsushita.mp3
+sharp TV Size - Negoto.mp3
+Time: 00:00:11 ======================================================================= 100% 143 KB/sec
+Time: 00:00:21 ======================================================================== 100% 68 KB/sec
+```
+
 ## Features
 
 - [x] Download songs/playlists from NCT
 - [x] Download songs/playlist from Zing MP3
 - [x] Visual progress bar for download
 - [x] Specify download folder
-- [ ] Multi-thread
+- [x] Multi-thread
 - [ ] Cache data
 - [ ] Read a file to get list of links to download
 

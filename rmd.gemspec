@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'mechanize', '~> 2.7'
   spec.add_dependency 'ruby-progressbar', '~> 1.7'
   spec.add_dependency 'colorize', '~> 0.7'
+  spec.add_dependency 'parallel', '~> 1.3'
 
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake", "~> 10.1"

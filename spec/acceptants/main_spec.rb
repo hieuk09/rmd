@@ -35,7 +35,7 @@ describe RMD::Main do
       it_behaves_like 'download'
     end
 
-    context 'when downloads song with options' do
+    context 'when downloads song with folder options' do
       let(:link) { 'http://mp3.zing.vn/bai-hat/Bird-TV-Size-Yuya-Matsushita/ZWZCO98B.html' }
       let(:file_name) { 'Bird TV Size - Yuya Matsushita.mp3' }
       let(:scenario) { 'zing song' }
@@ -49,6 +49,14 @@ describe RMD::Main do
         end
         File.delete(file_path)
       end
+    end
+
+    context 'when downloads song with multithread options' do
+      let(:options) { { fast: true } }
+      let(:link) { 'http://mp3.zing.vn/playlist/dev-playlist-zid-sincepast/IO0E698Z.html' }
+      let(:file_name) { 'sharp TV Size - Negoto.mp3' }
+      let(:scenario) { 'zing playlist' }
+      it_behaves_like 'download'
     end
   end
 end

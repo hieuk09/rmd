@@ -1,6 +1,6 @@
-require 'rmd/downloader'
 require 'rmd/factory/main'
-require 'ruby-progressbar'
+require 'rmd/process_strategy/single_thread'
+require 'rmd/process_strategy/multi_thread'
 
 module RMD
   class Processor
@@ -17,9 +17,7 @@ module RMD
       playlist.fetch
 
       if playlist.success?
-        playlist.songs.each do |song|
-          download(song)
-        end
+        strategy.process(playlist.songs)
       end
 
       playlist.errors.each do |error|
@@ -38,8 +36,12 @@ module RMD
 
     private
 
-    def download(data_link)
-      RMD::Downloader.download(data_link, options)
+    def strategy
+      @strategy ||= if options[:fast]
+                    RMD::ProcessStrategy::MultiThread.new(options)
+                  else
+                    RMD::ProcessStrategy::SingleThread.new(options)
+                  end
     end
   end
 end
