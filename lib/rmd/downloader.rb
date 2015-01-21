@@ -46,9 +46,9 @@ module RMD
     private
 
     def file_path
-      if options[:folder]
-        FileUtils.mkdir_p(options[:folder]) unless File.directory?(options[:folder])
-        File.join(options[:folder], file_name)
+      if folder_path
+        FileUtils.mkdir_p(folder_path) unless File.directory?(folder_path)
+        File.join(folder_path, file_name)
       else
         file_name
       end
@@ -66,6 +66,10 @@ module RMD
       else
         File.basename(uri.path)
       end
+    end
+
+    def folder_path
+      options[:folder]
     end
   end
 end

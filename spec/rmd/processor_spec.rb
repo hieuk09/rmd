@@ -8,10 +8,24 @@ describe RMD::Processor do
     let(:link) { 'www.example/xyz/abc.mp3' }
     let(:processor) { double('RMD::processor') }
 
-    it 'processes' do
+    before do
       expect(described_class).to receive(:new).with(link, {}).and_return(processor)
-      expect(processor).to receive(:process)
-      described_class.process(link)
+    end
+
+    context 'when there is no error' do
+      it 'processes' do
+        expect(processor).to receive(:process)
+        described_class.process(link)
+      end
+    end
+
+    context 'when there is error' do
+      it 'processes' do
+        expect(processor).to receive(:process).and_raise('error')
+        expect {
+          described_class.process(link)
+        }.to output("\e[0;31;49merror\e[0m\n\e[0;31;49mErrors! Can not continue!\e[0m\n").to_stdout
+      end
     end
   end
 
@@ -24,7 +38,7 @@ describe RMD::Processor do
                                      success?: success) }
 
     before do
-      expect(RMD::Factory).to receive(:build).with(link).and_return(playlist)
+      expect(RMD::Factory::Main).to receive(:build).with(link).and_return(playlist)
       expect(playlist).to receive(:fetch)
     end
 

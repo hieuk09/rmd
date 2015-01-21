@@ -1,5 +1,5 @@
 require 'rmd/downloader'
-require 'rmd/factory'
+require 'rmd/factory/main'
 require 'ruby-progressbar'
 
 module RMD
@@ -13,7 +13,7 @@ module RMD
 
     def process
       puts "Start processing #{link}...".green
-      playlist = RMD::Factory.build(link)
+      playlist = RMD::Factory::Main.build(link)
       playlist.fetch
 
       if playlist.success?
@@ -30,8 +30,8 @@ module RMD
     def self.process(link, options = {})
       begin
         new(link, options).process
-      rescue => e
-        puts e.message.red
+      rescue => error
+        puts error.message.red
         puts 'Errors! Can not continue!'.red
       end
     end

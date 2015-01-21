@@ -32,7 +32,7 @@ module RMD
       end
 
       def calculate_progress
-        if song_elements.count > 0
+        if song_elements != []
           progress_bar = ProgressBar.create(
             starting_at: 0,
             total: song_elements.count,

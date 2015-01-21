@@ -17,13 +17,17 @@
 require 'byebug'
 require 'webmock/rspec'
 require 'vcr'
-require 'simplecov'
-require 'coveralls'
-require 'rmd'
 Dir[__dir__ + '/support/**/*.rb'].each { |f| require f }
 
-Coveralls.wear!
-SimpleCov.start
+if ENV['TRAVIS']
+  require 'coveralls'
+  Coveralls.wear!
+else
+  require 'simplecov'
+  SimpleCov.start
+end
+
+require 'rmd'
 
 VCR.configure do |config|
   config.cassette_library_dir = "fixtures/vcr_cassettes"
