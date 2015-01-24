@@ -1,3 +1,5 @@
+require 'forwardable'
+
 module RMD
   class SongPlaylistAdapter
     extend Forwardable
