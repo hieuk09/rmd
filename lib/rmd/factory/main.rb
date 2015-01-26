@@ -1,5 +1,7 @@
 require 'rmd/factory/nct'
 require 'rmd/factory/zing'
+require 'rmd/song_playlist_adapter'
+require 'rmd/sound_cloud/song'
 
 module RMD
   module Factory
@@ -16,6 +18,8 @@ module RMD
           RMD::Factory::NCT.build(link)
         when /mp3\.zing\.vn/
           RMD::Factory::Zing.build(link)
+        when /soundcloud\.com/
+          RMD::SongPlaylistAdapter.new(RMD::SoundCloud::Song.new(link))
         else
           raise 'Your url must belong to nhaccuatui/zing.'
         end

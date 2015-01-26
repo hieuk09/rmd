@@ -35,6 +35,13 @@ describe RMD::Main do
       it_behaves_like 'download'
     end
 
+    context 'when downloads song from sound clound' do
+      let(:link) { 'https://soundcloud.com/raesremmurd/rae-sremmurd-no-type-prod-by-mike-will-made-it-swae-lee-of-rae-sremmurd' }
+      let(:file_name) { 'VeQsroSwvmyG.128.mp3' }
+      let(:scenario) { 'sound cloud song' }
+      it_behaves_like 'download'
+    end
+
     context 'when downloads song with folder options' do
       let(:link) { 'http://mp3.zing.vn/bai-hat/Bird-TV-Size-Yuya-Matsushita/ZWZCO98B.html' }
       let(:file_name) { 'Bird TV Size - Yuya Matsushita.mp3' }
