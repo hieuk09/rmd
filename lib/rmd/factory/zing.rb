@@ -8,7 +8,7 @@ module RMD
       private
 
       def playlist_regex
-        /album|playlist/
+        /\/album|playlist\//
       end
 
       def base_class

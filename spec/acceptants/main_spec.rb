@@ -16,8 +16,14 @@ describe RMD::Main do
     context 'when downloads playlist from nhaccuatui' do
       let(:link) { 'http://www.nhaccuatui.com/playlist/dev-playlist-dang-cap-nhat.jn0g1fg4Z6UO.html' }
       let(:file_name) { 'BlazeTvSize-KajiuraYuki_35ax5_hq.mp3' }
-      let(:file_path) { File.expand_path("../../../#{file_name}", __FILE__) }
       let(:scenario) { 'nhaccuatui playlist' }
+      it_behaves_like 'download'
+    end
+
+    context 'when downloads video from nhaccuatui' do
+      let(:link) { 'http://www.nhaccuatui.com/video/con-nha-ngheo-doraemon-che-leg.e56WN9Yq7T8ce.html' }
+      let(:file_name) { 'ConNhaNgheoDoraemonChe-LEG-3822874.mp4' }
+      let(:scenario) { 'nhaccuatui video'}
       it_behaves_like 'download'
     end
 
