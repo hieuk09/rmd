@@ -41,6 +41,13 @@ describe RMD::Main do
       it_behaves_like 'download'
     end
 
+    context 'when download video from voyeurhit' do
+      let(:link) { 'http://voyeurhit.com/videos/change-room-voyeur-video-n-40/' }
+      let(:file_name) { '42672_lq.mp4' }
+      let(:scenario) { 'voyeurhit video' }
+      it_behaves_like 'download'
+    end
+
     context 'when downloads song with folder options' do
       let(:link) { 'http://mp3.zing.vn/bai-hat/Bird-TV-Size-Yuya-Matsushita/ZWZCO98B.html' }
       let(:file_name) { 'Bird TV Size - Yuya Matsushita.mp3' }

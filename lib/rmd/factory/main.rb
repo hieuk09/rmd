@@ -1,5 +1,6 @@
 require 'rmd/factory/nct'
 require 'rmd/factory/zing'
+require 'rmd/factory/voyeurhit'
 
 module RMD
   module Factory
@@ -16,6 +17,8 @@ module RMD
           RMD::Factory::NCT.build(link)
         when /mp3\.zing\.vn/
           RMD::Factory::Zing.build(link)
+        when /voyeurhit\.com\//
+          RMD::Factory::Voyeurhit.build(link)
         else
           raise 'Your url must belong to nhaccuatui/zing.'
         end
