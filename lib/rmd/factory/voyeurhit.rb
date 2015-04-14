@@ -1,6 +1,7 @@
 require 'rmd/voyeurhit/video'
 require 'rmd/private_home_clips/video'
 require 'rmd/xvideo/video'
+require 'rmd/xhamster/video'
 
 module RMD
   module Factory
@@ -29,6 +30,8 @@ module RMD
           RMD::PrivateHomeClips::Video.new(link)
         when /xvideos\.com\//
           RMD::Xvideo::Video.new(link)
+        when /xhamster\.com\//
+          RMD::Xhamster::Video.new(link)
         else
           raise 'Your url is not supported!'
         end

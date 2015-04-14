@@ -11,9 +11,7 @@ module RMD
         agent = Mechanize.new
         page = agent.get(link)
         page.search(script_css_selector).each do |element|
-          if match = extract_text(element).match(video_link_regex)
-            @data_link = match.captures.last
-          end
+          extract_data_link(element)
         end
       end
 
@@ -22,6 +20,12 @@ module RMD
       end
 
       private
+
+      def extract_data_link(element)
+        if match = extract_text(element).match(video_link_regex)
+          @data_link = match.captures.last
+        end
+      end
 
       def extract_text(element)
         element.text
