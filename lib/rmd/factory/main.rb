@@ -17,10 +17,8 @@ module RMD
           RMD::Factory::NCT.build(link)
         when /mp3\.zing\.vn/
           RMD::Factory::Zing.build(link)
-        when /voyeurhit\.com\/|privatehomeclips\.com\//
-          RMD::Factory::Voyeurhit.build(link)
         else
-          raise 'Your url must belong to nhaccuatui/zing.'
+          RMD::Factory::Voyeurhit.build(link)
         end
       end
 

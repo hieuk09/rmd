@@ -1,5 +1,6 @@
 require 'rmd/voyeurhit/video'
 require 'rmd/private_home_clips/video'
+require 'rmd/xvideo/video'
 
 module RMD
   module Factory
@@ -26,8 +27,10 @@ module RMD
           RMD::Voyeurhit::Video.new(link)
         when /privatehomeclips\.com\//
           RMD::PrivateHomeClips::Video.new(link)
+        when /xvideos\.com\//
+          RMD::Xvideo::Video.new(link)
         else
-          raise 'Your url must belongs to voyeurhit/privatehomeclips'
+          raise 'Your url is not supported!'
         end
       end
     end

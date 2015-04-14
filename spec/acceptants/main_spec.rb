@@ -55,6 +55,13 @@ describe RMD::Main do
       it_behaves_like 'download'
     end
 
+    context 'when download video from xvideos' do
+      let(:link) { 'http://www.xvideos.com/video983845/sabrina_sabrok_celeb_biggest_breast_blooper_nipple' }
+      let(:file_name) { 'xvideos.com_7a63a369e552900948f7365252b797a8.flv;v=1' }
+      let(:scenario) { 'xvideos video' }
+      it_behaves_like 'download'
+    end
+
     context 'when downloads song with folder options' do
       let(:link) { 'http://mp3.zing.vn/bai-hat/Bird-TV-Size-Yuya-Matsushita/ZWZCO98B.html' }
       let(:file_name) { 'Bird TV Size - Yuya Matsushita.mp3' }
