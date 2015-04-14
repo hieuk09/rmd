@@ -48,6 +48,13 @@ describe RMD::Main do
       it_behaves_like 'download'
     end
 
+    context 'when download video from privatehomeclips' do
+      let(:link) { 'http://www.privatehomeclips.com/videos/bewitching-19yo-oriental-fuck-and-facial' }
+      let(:file_name) { '170895_hq.mp4' }
+      let(:scenario) { 'privatehomeclips video' }
+      it_behaves_like 'download'
+    end
+
     context 'when downloads song with folder options' do
       let(:link) { 'http://mp3.zing.vn/bai-hat/Bird-TV-Size-Yuya-Matsushita/ZWZCO98B.html' }
       let(:file_name) { 'Bird TV Size - Yuya Matsushita.mp3' }
