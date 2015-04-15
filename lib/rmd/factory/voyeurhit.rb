@@ -5,6 +5,7 @@ require 'rmd/porn/video'
 require 'rmd/xvideo/video'
 require 'rmd/xhamster/video'
 require 'rmd/beeg/video'
+require 'rmd/osaka69/video'
 
 module RMD
   module Factory
@@ -41,6 +42,8 @@ module RMD
           RMD::Xhamster::Video.new(link)
         when /beeg\.com\//
           RMD::Beeg::Video.new(link)
+        when /osaka69\.com\//
+          RMD::Osaka69::Video.new(link)
         else
           raise 'Your url is not supported!'
         end
