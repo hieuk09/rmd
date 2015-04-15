@@ -55,6 +55,13 @@ describe RMD::Main do
       it_behaves_like 'download'
     end
 
+    context 'when download video from mylust' do
+      let(:link) { 'http://mylust.com/videos/157211/my-brunette-secretary-working-on-my-prick-in-the-office/' }
+      let(:file_name) { '157211.mp4' }
+      let(:scenario) { 'mylust video' }
+      it_behaves_like 'download'
+    end
+
     context 'when download video from xvideos' do
       let(:link) { 'http://www.xvideos.com/video983845/sabrina_sabrok_celeb_biggest_breast_blooper_nipple' }
       let(:file_name) { 'xvideos.com_7a63a369e552900948f7365252b797a8.flv;v=1' }
