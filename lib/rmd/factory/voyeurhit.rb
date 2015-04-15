@@ -1,6 +1,7 @@
 require 'rmd/voyeurhit/video'
 require 'rmd/private_home_clips/video'
 require 'rmd/my_lust/video'
+require 'rmd/porn/video'
 require 'rmd/xvideo/video'
 require 'rmd/xhamster/video'
 require 'rmd/beeg/video'
@@ -32,6 +33,8 @@ module RMD
           RMD::PrivateHomeClips::Video.new(link)
         when /mylust\.com\//
           RMD::MyLust::Video.new(link)
+        when /porn\.com\//
+          RMD::Porn::Video.new(link)
         when /xvideos\.com\//
           RMD::Xvideo::Video.new(link)
         when /xhamster\.com\//

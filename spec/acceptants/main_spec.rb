@@ -62,6 +62,13 @@ describe RMD::Main do
       it_behaves_like 'download'
     end
 
+    context 'when download video from porn' do
+      let(:link) { 'http://www.porn.com/videos/christy-mack-sucks-on-war-machine-s-knob-1670223' }
+      let(:file_name) { 'NOWATERMARK_720p_stream.mp4' }
+      let(:scenario) { 'porn video' }
+      it_behaves_like 'download'
+    end
+
     context 'when download video from xvideos' do
       let(:link) { 'http://www.xvideos.com/video983845/sabrina_sabrok_celeb_biggest_breast_blooper_nipple' }
       let(:file_name) { 'xvideos.com_7a63a369e552900948f7365252b797a8.flv;v=1' }
