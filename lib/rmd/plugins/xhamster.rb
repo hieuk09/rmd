@@ -1,6 +1,14 @@
+require 'rmd/plugins/base/flash_video'
+
 module RMD
-  module Xhamster
-    class Video < RMD::Voyeurhit::Video
+  module Plugins
+    class Xhamster < RMD::Plugins::Base::FlashVideo
+      add_to_plugin self
+
+      def match?
+        link =~ /xhamster\.com\//
+      end
+
       private
 
       def extract_data_link(element)

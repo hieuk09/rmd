@@ -1,6 +1,12 @@
 module RMD
-  module Xvideo
-    class Video < RMD::Voyeurhit::Video
+  module Plugins
+    class Xvideo < RMD::Plugins::Base::FlashVideo
+      add_to_plugin self
+
+      def match?
+        link =~ /xvideos\.com\//
+      end
+
       private
 
       def extract_text(element)

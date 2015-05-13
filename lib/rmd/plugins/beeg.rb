@@ -1,8 +1,14 @@
-require 'rmd/voyeurhit/video'
+require 'rmd/plugins/base/nil_plugin'
 
 module RMD
-  module Beeg
-    class Video < RMD::Voyeurhit::Video
+  module Plugins
+    class Beeg < RMD::Plugins::Base::NilPlugin
+      add_to_plugin self
+
+      def match?
+        link =~ /beeg\.com\//
+      end
+
       def fetch
         if match = link.match(video_id_regex)
           @data_link = link_from_id(match.captures.last)

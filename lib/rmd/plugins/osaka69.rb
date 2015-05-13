@@ -3,6 +3,12 @@ require 'rmd/beeg/video'
 module RMD
   module Osaka69
     class Video < RMD::Beeg::Video
+      add_to_plugin self
+
+      def match?
+        link =~ /osaka69\.com\//
+      end
+
       private
 
       def video_id_regex
