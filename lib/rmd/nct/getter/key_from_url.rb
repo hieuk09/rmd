@@ -1,4 +1,5 @@
 require 'rmd/nct/getter/base'
+require 'json'
 
 module RMD
   module NCT
